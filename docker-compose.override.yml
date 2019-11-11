@@ -1,0 +1,58 @@
+version: '3.4'
+
+services:  
+  eureka:
+    hostname: eureka
+    container_name: eureka
+    ports:
+      - "8761:8761"
+    expose:
+      - "8761"
+      
+  configserver:
+    hostname: configserver
+    container_name: configserver
+    ports:
+      - "8888:8888"
+    expose:
+      - "8888"    
+    
+  accountservice:
+    image: sagarjana94/accountservice
+    hostname: accountservice
+    container_name: accountservice    
+    ports:
+      - "8000:80" 
+    expose:
+      - "8000"
+
+  transactionservice:
+    image: sagarjana94/transactionservice
+    hostname: transactionservice
+    container_name: transactionservice    
+    ports:
+      - "7000:80" 
+    expose:
+      - "7000"
+      
+  servicerequestservice:
+    image: sagarjana94/servicerequestservice
+    hostname: servicerequestservice
+    container_name: servicerequestservice    
+    ports:
+      - "6000:80" 
+    expose:
+      - "6000"    
+      
+  apigateway:
+    image: sagarjana94/apigateway
+    hostname: apigateway
+    container_name: apigateway    
+    ports:
+      - "5000:80" 
+    expose:
+      - "5000"
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+      
+      

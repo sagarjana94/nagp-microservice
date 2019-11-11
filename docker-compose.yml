@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:  
+  eureka:
+    image: sagarjana94/eureka
+    
+  configserver:
+    image: sagarjana94/configserver  
+      
+  accountservice:
+    image: sagarjana94/accountservice
+    build:
+      context: .
+      dockerfile: AccountManagement/Dockerfile
+    depends_on:
+      - eureka
+    command: ["./wait-for-it.sh", "eureka:8761", "--", "python", "app.py"]
+    
+  transactionservice:
+    image: sagarjana94/transactionservice
+    build:
+      context: .
+      dockerfile: TransactionManagement/Dockerfile
+    depends_on:
+      - eureka
+    command: ["./wait-for-it.sh", "eureka:8761", "--", "python", "app.py"]
+
+  servicerequestservice:
+    image: sagarjana94/servicerequestservice
+    build:
+      context: .
+      dockerfile: ServiceRequestManagement/Dockerfile
+    depends_on:
+      - eureka
+    command: ["./wait-for-it.sh", "eureka:8761", "--", "python", "app.py"]
+
+  apigateway:
+    image: sagarjana94/apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    depends_on:
+      - eureka
+    command: ["./wait-for-it.sh", "eureka:8761", "--", "python", "app.py"]

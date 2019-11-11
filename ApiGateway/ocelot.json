@@ -1,0 +1,116 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/account/user/{userId}",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "accountservice",
+      "UpstreamPathTemplate": "/account/user/{userId}",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/account/close/{number}",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "accountservice",
+      "UpstreamPathTemplate": "/account/close/{number}",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/account",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "accountservice",
+      "UpstreamPathTemplate": "/account",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/account/accounts/info/user/{userId}",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "accountservice",
+      "UpstreamPathTemplate": "/account/accounts/info/user/{userId}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/account/accounts/branch/update",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "accountservice",
+      "UpstreamPathTemplate": "/account/accounts/branch/update",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/user",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "accountservice",
+      "UpstreamPathTemplate": "/user",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/user",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "accountservice",
+      "UpstreamPathTemplate": "/user",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/chequebook/order/{accountNumber}",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "servicerequestservice",
+      "UpstreamPathTemplate": "/chequebook/order/{accountNumber}",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/chequebook/block/{accountNumber}",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "servicerequestservice",
+      "UpstreamPathTemplate": "/chequebook/block/{accountNumber}",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/transaction/withdraw",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "transactionservice",
+      "UpstreamPathTemplate": "/transaction/withdraw",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/transaction/deposit",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "transactionservice",
+      "UpstreamPathTemplate": "/transaction/deposit",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/transaction/transfer/destacc/{destAccountNum}",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "transactionservice",
+      "UpstreamPathTemplate": "/transaction/transfer/destacc/{destAccountNum}",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/transaction/history/{accountNum}",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "transactionservice",
+      "UpstreamPathTemplate": "/transaction/history/{accountNum}",
+      "UpstreamHttpMethod": [ "GET" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "UseServiceDiscovery": true,
+    "ServiceDiscoveryProvider": {
+      "Type": "Eureka",
+      "Host": "eureka",
+      "Port": "8761"
+    }
+  }
+}
